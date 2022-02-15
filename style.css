@@ -6,13 +6,10 @@
   --orange: #ff4c29;
   --white: #ededed;
 }
-
 body {
   background-color: var(--darker);
-  padding: 0;
   margin: 0;
 }
-
 h1,
 h2,
 h3,
@@ -22,7 +19,6 @@ h6 {
   margin: 0;
   padding: 0;
 }
-
 .container-fluid {
   margin: 0;
   padding: 1.5rem 1rem;
@@ -37,7 +33,6 @@ h6 {
   color: var(--white);
   text-align: center;
 }
-
 .movie-detail {
   position: fixed;
   bottom: 0;
@@ -45,36 +40,30 @@ h6 {
   right: 0;
   background-color: var(--white);
   border-radius: 20px 20px 0 0;
-  -webkit-border-radius: 20px 20px 0 0;
-  -moz-border-radius: 20px 20px 0 0;
-  -ms-border-radius: 20px 20px 0 0;
-  -o-border-radius: 20px 20px 0 0;
   padding: 2.5rem 2rem;
   height: 78%;
   z-index: 9;
   transform: translateY(100%);
+  transition: all 0.4s ease-in;
   -webkit-transform: translateY(100%);
   -moz-transform: translateY(100%);
   -ms-transform: translateY(100%);
   -o-transform: translateY(100%);
-  transition: all 0.4s ease-in;
   -webkit-transition: all 0.4s ease-in;
   -moz-transition: all 0.4s ease-in;
   -ms-transition: all 0.4s ease-in;
   -o-transition: all 0.4s ease-in;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  -ms-border-radius: 20px 20px 0 0;
+  -o-border-radius: 20px 20px 0 0;
 }
-
 .movie-detail.show {
   transform: translateY(0);
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
   -o-transform: translateY(0);
-  transition: all 0.4s ease-out;
-  -webkit-transition: all 0.4s ease-out;
-  -moz-transition: all 0.4s ease-out;
-  -ms-transition: all 0.4s ease-out;
-  -o-transition: all 0.4s ease-out;
 }
 .action-div {
   text-align: center;
@@ -92,33 +81,27 @@ h6 {
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
 }
-.action-div > button:hover {
-  border-color: var(--darker);
-  color: var(--darker);
-}
-
 .movie-list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-gap: 3rem 2rem;
   text-align: center;
 }
-
 .card {
   background-color: var(--white);
   border-radius: 10px 10px 5px 5px;
   padding: 0;
-  -webkit-border-radius: 10px 10px 5px 5px;
-  -moz-border-radius: 10px 10px 5px 5px;
-  -ms-border-radius: 10px 10px 5px 5px;
-  -o-border-radius: 10px 10px 5px 5px;
   cursor: pointer;
+  overflow: hidden;
   transition: all 0.2s ease;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -ms-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
-  overflow: hidden;
+  -webkit-border-radius: 10px 10px 5px 5px;
+  -moz-border-radius: 10px 10px 5px 5px;
+  -ms-border-radius: 10px 10px 5px 5px;
+  -o-border-radius: 10px 10px 5px 5px;
 }
 .card:hover img {
   transform: scale(1.15);
@@ -146,11 +129,6 @@ h6 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: inherit;
-  -webkit-border-radius: inherit;
-  -moz-border-radius: inherit;
-  -ms-border-radius: inherit;
-  -o-border-radius: inherit;
   transition: all 0.2s ease 0.07s;
   -webkit-transition: all 0.2s ease 0.07s;
   -moz-transition: all 0.2s ease 0.07s;
@@ -163,11 +141,6 @@ h6 {
   display: grid;
   grid-template-columns: 3fr 1fr;
   grid-gap: 0.4rem;
-  border-radius: inherit;
-  -webkit-border-radius: inherit;
-  -moz-border-radius: inherit;
-  -ms-border-radius: inherit;
-  -o-border-radius: inherit;
   font-family: monospace;
   font-size: 1.3rem;
 }
@@ -177,7 +150,6 @@ h6 {
 .star {
   color: var(--orange);
 }
-
 .movie-detail-wrapper {
   position: fixed;
   bottom: 0;
@@ -202,11 +174,9 @@ h6 {
   color: var(--white);
   font-size: 1.3rem;
 }
-
 .right > *:not(:last-child) {
   margin-bottom: 2.8rem;
 }
-
 .movie-img {
   width: 100%;
   height: 100%;
@@ -216,17 +186,14 @@ h6 {
   height: 100%;
   object-fit: contain;
 }
-
 .movie-name {
   font-size: 2.3rem;
   color: var(--white);
 }
-
 .data {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-
 .key {
   color: var(--orange);
 }
@@ -236,12 +203,10 @@ h6 {
 .value {
   color: var(--white);
 }
-
 .genres {
   display: flex;
   flex-wrap: wrap;
 }
-
 .tag {
   background: var(--dark);
   padding: 0.5rem 1rem;
@@ -252,13 +217,11 @@ h6 {
   -o-border-radius: 5px;
   margin-right: 1.5rem;
 }
-
 .summary > p {
   font-family: 'Courier New', Courier, monospace;
   line-height: 1.7;
   word-spacing: 7px;
 }
-
 .empty {
   width: 100%;
   height: 100%;

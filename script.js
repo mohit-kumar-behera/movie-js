@@ -65,12 +65,12 @@ const init = function () {
       <div class="data">
         <div class="keyval">
           <span class="key">Type</span>
-          <span class="val">${movie.type}</span>
+          <span class="val">${movie.type || 'Unknown'}</span>
         </div>
 
         <div class="keyval">
           <span class="key">Language</span>
-          <span class="val">${movie.laguage}</span>
+          <span class="val">${movie.laguage || 'Unknown'}</span>
         </div>
       </div>
 

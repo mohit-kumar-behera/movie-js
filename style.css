@@ -39,6 +39,9 @@ h6 {
   left: 0;
   right: 0;
   background-color: var(--white);
+  border-width: 0px 10px 0 10px;
+  border-style: solid;
+  border-color: var(--orange);
   border-radius: 20px 20px 0 0;
   padding: 2.5rem 2rem;
   height: 78%;
@@ -76,10 +79,19 @@ h6 {
   background-color: transparent;
   border: 0.7px solid var(--dark);
   border-radius: 2px;
+  transition: all 0.2s ease;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+}
+.action-div > button:hover {
+  color: var(--red);
+  border-color: var(--red);
 }
 .movie-list {
   display: grid;

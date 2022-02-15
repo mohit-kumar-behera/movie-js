@@ -54,6 +54,12 @@ const init = function () {
     lazyImgObserver.observe(lazyImgElem);
   };
 
+  const formatDateStr = function (dateStr) {
+    if (!dateStr) return '-/-/-';
+    const [y, m, d] = dateStr.split('-');
+    return `${d}-${m}-${y}`;
+  };
+
   const buildMovieCard = function (movie) {
     return `
       <div class="card" data-id="${movie.id}">
@@ -94,7 +100,7 @@ const init = function () {
       <div class="data">
         <div class="keyval">
           <span class="key">Premiered</span>
-          <span class="val">${movie.premiered}</span>
+          <span class="val">${formatDateStr(movie.premiered)}</span>
         </div>
 
         <div class="keyval">
@@ -116,7 +122,7 @@ const init = function () {
 
         <div class="keyval">
           <span class="key">Language</span>
-          <span class="val">${movie.laguage || 'Unknown'}</span>
+          <span class="val">${movie.language || 'Unknown'}</span>
         </div>
       </div>
 

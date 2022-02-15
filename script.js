@@ -10,6 +10,50 @@ const init = function () {
     movieDetail.classList.remove('show')
   );
 
+  const loadImage = function (imageEl, imageSrc) {
+    return new Promise((resolve, reject) => {
+      imageEl.src = imageSrc;
+
+      imageEl.addEventListener('load', () => resolve(imageEl));
+      imageEl.addEventListener('error', () =>
+        reject(new Error('Unable to Load Image'))
+      );
+    });
+  };
+
+  const lazyImgObserverHandler = function () {
+    const lazyClassName = 'lazy-load';
+    const lazyImgElem = document.querySelector(`.${lazyClassName}`);
+
+    const handleLazyImg = async function (entries) {
+      const [entry] = entries;
+      if (!entry.isIntersecting) return;
+
+      const elem = entry.target;
+
+      try {
+        await loadImage(elem, elem.dataset.src);
+      } catch (err) {
+        elem.setAttribute('alt', 'Unable to Load Mohit Kumar Photo');
+      } finally {
+        elem.classList.remove(lazyClassName);
+      }
+
+      lazyImgObserver.unobserve(elem);
+    };
+
+    const lazyImgOption = {
+      root: null,
+      threshold: 0.1,
+    };
+
+    const lazyImgObserver = new IntersectionObserver(
+      handleLazyImg,
+      lazyImgOption
+    );
+    lazyImgObserver.observe(lazyImgElem);
+  };
+
   const buildMovieCard = function (movie) {
     return `
       <div class="card" data-id="${movie.id}">
@@ -40,7 +84,9 @@ const init = function () {
     return `
     <div class="left">
       <div class="movie-img">
-        <img src="${movie.image.medium}" />
+        <img src="${
+          movie.image.medium
+        }" class="lazy-load movie-lazy-img" data-src="${movie.image.original}"/>
       </div>
     </div>
     <div class="right">
@@ -103,10 +149,18 @@ const init = function () {
     movieDetailWrapper.insertAdjacentHTML('afterbegin', markup);
 
     movieDetail.classList.add('show');
+    lazyImgObserverHandler();
   };
 
   const addHandlerToMovieList = function () {
     movieList.addEventListener('click', handleMovieClick);
+  };
+
+  const loadMoviesToLocalBucket = function (movies) {
+    return new Promise(resolve => {
+      moviesBucket = [...movies];
+      resolve('Load succesfully');
+    });
   };
 
   const addMoviesToUi = async function (movies) {
@@ -116,11 +170,11 @@ const init = function () {
 
     movieList.insertAdjacentHTML('afterbegin', markup);
 
-    moviesBucket = await [...movies];
+    await loadMoviesToLocalBucket(movies);
     addHandlerToMovieList();
   };
 
-  const loadMovies = async function () {
+  const loadMoviesFromJson = async function () {
     try {
       const res = await fetch('data/tv-show.json');
       const data = await res.json();
@@ -130,7 +184,8 @@ const init = function () {
       console.error('something went wrong');
     }
   };
-  loadMovies();
+
+  loadMoviesFromJson();
 };
 
 window.addEventListener('load', init());
